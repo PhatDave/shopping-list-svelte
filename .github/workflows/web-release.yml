@@ -11,7 +11,7 @@ on:
 jobs:
   web-release:
     name: Build & Deploy Web
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     steps:
       - name: Checkout
