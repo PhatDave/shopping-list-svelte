@@ -59,7 +59,7 @@ jobs:
             captain-definition
             nginx.conf
             Dockerfile
-          outPath: deploy.tar
+          outPath: /github/workspace/deploy.tar
 
       - name: Deploy App to CapRover
         uses: caprover/deploy-from-github@v1.0.1
