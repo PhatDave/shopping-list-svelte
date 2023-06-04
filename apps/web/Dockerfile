@@ -1,6 +1,5 @@
 FROM nginx:stable-alpine3.17
 
- 	
 LABEL author="PhatDave"
 
 WORKDIR /app
