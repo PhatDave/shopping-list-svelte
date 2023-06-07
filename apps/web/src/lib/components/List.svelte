@@ -1,7 +1,6 @@
 <script lang="ts">
     import type Item from "$lib/Item";
-    import ItemService from "$lib/ItemService";
-    import { createEventDispatcher } from 'svelte';
+    import {createEventDispatcher} from 'svelte';
 
     let dispatcher = createEventDispatcher();
 
@@ -9,6 +8,10 @@
 
     function delete_item(item: Item) {
         dispatcher('delete_item', item);
+    }
+
+    function update_item(item: Item) {
+        dispatcher('update_item', item);
     }
 </script>
 
@@ -25,7 +28,8 @@
             <tbody>
             {#each items as item, i (item.id)}
                 <tr>
-                    <td class="md:min-w-[70vw] md:max-w-[70vw] overflow-x-auto" contenteditable>{item.content}</td>
+                    <td class="md:min-w-[70vw] md:max-w-[70vw] overflow-x-auto" contenteditable
+                        on:focusout={update_item(item)} bind:innerHTML={item.content}></td>
                     <td>
                         <div class="form-control">
                             <span>2023-05-13</span>
@@ -34,7 +38,8 @@
                     </td>
                     <td>
                         <button class="btn rounded-xl p-5 text-center content-center btn-outline btn-error md:btn-sm max-sm:btn-xs"
-                                on:click={delete_item(item)}>DELETE</button>
+                                on:click={delete_item(item)}>DELETE
+                        </button>
                     </td>
                 </tr>
             {/each}

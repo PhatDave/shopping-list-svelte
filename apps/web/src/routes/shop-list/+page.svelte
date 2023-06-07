@@ -11,15 +11,23 @@
 
     async function delete_item(event: CustomEvent<Item>) {
         const item = event.detail;
-        await shoppingListApi.delete(item.id);
+        await shoppingListApi.delete(item);
         items = items.filter((i) => i.id !== item.id);
+    }
+
+    async function update_item(event: CustomEvent<Item>) {
+        const item = event.detail;
+        const new_item = await shoppingListApi.update(item);
+        items = items.map((i) => i.id === new_item.id ? new_item : i);
     }
 </script>
 
 <div class="form-control flex-1 items-center justify-center">
     {#await api_call_promise}
         <p>loading...</p>
-    {:then}
-        <List {items} on:delete_item={delete_item}/>
+    {:then it}
+        <List {items}
+              on:delete_item={delete_item}
+              on:update_item={update_item}/>
     {/await}
 </div>
