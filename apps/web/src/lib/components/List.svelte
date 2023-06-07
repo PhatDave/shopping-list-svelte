@@ -28,12 +28,12 @@
             <tbody>
             {#each items as item, i (item.id)}
                 <tr>
-                    <td class="md:min-w-[70vw] md:max-w-[70vw] overflow-x-auto" contenteditable
+                    <td class="md:min-w-[70vw] md:max-w-[70vw] overflow-x-auto text-start" contenteditable
                         on:focusout={update_item(item)} bind:innerHTML={item.content}></td>
                     <td>
-                        <div class="form-control">
+                        <div class="form-control text-sm">
                             <span>2023-05-13</span>
-                            <span class="opacity-75">13:54:12</span>
+                            <span class="opacity-75 text-xs">13:54:12</span>
                         </div>
                     </td>
                     <td>

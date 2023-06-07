@@ -45,6 +45,7 @@
              class="btn btn-primary text-xl"
              on:focusin={insert_item = ""}
              on:click={do_insert}
+             on:keyup={e => e.which === 13 && do_insert(e)}
              contenteditable></div>
     </div>
 </template>
