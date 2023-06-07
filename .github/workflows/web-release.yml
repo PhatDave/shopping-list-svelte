@@ -6,7 +6,9 @@ on:
     branches:
       - 'release'
     paths:
+      - '.github/workflows/*'
       - 'apps/web/**/*'
+      - 'pnpm-lock.yaml'
 
 jobs:
   web-release:
