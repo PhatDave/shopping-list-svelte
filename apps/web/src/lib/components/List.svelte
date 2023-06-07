@@ -1,7 +1,15 @@
 <script lang="ts">
     import type Item from "$lib/Item";
+    import ItemService from "$lib/ItemService";
+    import { createEventDispatcher } from 'svelte';
+
+    let dispatcher = createEventDispatcher();
 
     export let items: Item[];
+
+    function delete_item(item: Item) {
+        dispatcher('delete_item', item);
+    }
 </script>
 
 <template>
@@ -25,7 +33,8 @@
                         </div>
                     </td>
                     <td>
-                        <button class="btn rounded-xl p-5 text-center content-center btn-outline btn-error md:btn-sm max-sm:btn-xs">DELETE</button>
+                        <button class="btn rounded-xl p-5 text-center content-center btn-outline btn-error md:btn-sm max-sm:btn-xs"
+                                on:click={delete_item(item)}>DELETE</button>
                     </td>
                 </tr>
             {/each}
