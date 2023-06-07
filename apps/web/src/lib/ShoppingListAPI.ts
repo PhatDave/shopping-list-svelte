@@ -7,8 +7,28 @@ class ShoppingListAPI extends API {
     private url = `${env.PUBLIC_SHOPPING_LIST_URL}/records`;
     private default_filter = env.PUBLIC_DEFAULT_FILTER;
 
-    async create(item: Item): Promise<Item> {
-        return Promise.resolve(item);
+    async create(content:string): Promise<Item> {
+        if (!content) {
+            return Promise.reject("Content is required");
+        }
+        const item = ItemService.create(content);
+        const data = {
+            content: item.content,
+            deleted: item.deleted,
+            deleted_at: item.deleted_at,
+        }
+        const res = await fetch(this.url, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+        if (!res.ok) {
+            throw new Error("Failed to create item");
+        }
+        const json = await res.json();
+        return ItemService.deserialize(json);
     }
 
     async get_all(): Promise<Item[]> {
