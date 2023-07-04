@@ -28,7 +28,7 @@
             <tbody>
             {#each items as item, i (item.id)}
                 <tr>
-                    <td class="md:min-w-[70vw] md:max-w-[70vw] overflow-x-auto text-start" contenteditable
+                    <td class="md:min-w-[70vw] md:max-w-[70vw] overflow-x-auto text-start capitalize" contenteditable
                         on:focusout={update_item(item)} bind:innerHTML={item.content}></td>
                     <td>
                         <div class="form-control text-sm">
@@ -37,7 +37,7 @@
                         </div>
                     </td>
                     <td>
-                        <button class="btn rounded-xl p-5 text-center content-center btn-outline btn-error md:btn-sm max-sm:btn-xs"
+                        <button class="btn rounded-xl p-5 text-center content-center btn-outline btn-error md:btn-sm max-sm:btn-xs normal-case"
                                 on:click={delete_item(item)}>DELETE
                         </button>
                     </td>

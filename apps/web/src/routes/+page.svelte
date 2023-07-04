@@ -24,7 +24,7 @@
     }
 
     async function do_insert(event: Event) {
-        const item = await shoppingListApi.create(insert_item);
+        const item = await shoppingListApi.create(insert_item.trim());
         items = [...items, item];
         insert_item = "";
     }
