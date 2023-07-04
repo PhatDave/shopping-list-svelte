@@ -11,7 +11,7 @@
     <nav>
         <ul class="flex gap-x-8 text-3xl font-bold [&_a:hover]:text-primary [&_a]:transition-colors">
             <li>
-                <a href="/shop-list"> Shopping List </a>
+                <a href="/"> Shopping List </a>
             </li>
             <li>
                 <a href="/todo"> TODO </a>
