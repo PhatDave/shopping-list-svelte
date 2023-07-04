@@ -13,6 +13,16 @@
     function update_item(item: Item) {
         dispatcher('update_item', item);
     }
+
+    function get_updated_date(item: Item) {
+        let date = new Date(item.updated);
+        return date.toLocaleDateString();
+    }
+
+    function get_updated_time(item: Item) {
+        let date = new Date(item.updated);
+        return date.toLocaleTimeString();
+    }
 </script>
 
 <template>
@@ -32,8 +42,8 @@
                         on:focusout={update_item(item)} bind:innerHTML={item.content}></td>
                     <td>
                         <div class="form-control text-sm">
-                            <span>2023-05-13</span>
-                            <span class="opacity-75 text-xs">13:54:12</span>
+                            <span>{get_updated_date(item)}</span>
+                            <span class="opacity-75 text-xs">{get_updated_time(item)}</span>
                         </div>
                     </td>
                     <td>

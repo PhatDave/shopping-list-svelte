@@ -24,9 +24,12 @@
     }
 
     async function do_insert(event: Event) {
+        if (insert_item.endsWith("<div><br></div>")) {
+            insert_item = insert_item.slice(0, -15);
+        }
         const item = await shoppingListApi.create(insert_item.trim());
         items = [...items, item];
-        insert_item = "";
+        insert_item = " ";
     }
 </script>
 

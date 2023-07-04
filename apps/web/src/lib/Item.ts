@@ -4,6 +4,7 @@ export default class Item {
     deleted: boolean = false;
     deleted_at: Date = new Date();
     created: Date = new Date();
+    updated: Date = new Date();
 
     constructor() {
     }

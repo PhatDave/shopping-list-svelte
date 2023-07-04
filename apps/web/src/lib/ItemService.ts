@@ -8,6 +8,7 @@ export default class ItemService {
         item.deleted = Boolean(input.deleted);
         item.deleted_at = new Date(input.deleted_at);
         item.created = new Date(input.created);
+        item.updated = new Date(input.updated);
         return item;
     }
 
