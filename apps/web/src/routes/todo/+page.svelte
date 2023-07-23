@@ -2,6 +2,7 @@
     import List from "$components/List.svelte";
     import {todoListAPI} from "$lib/TodoListAPI";
     import type Item from "$lib/Item";
+    import {shoppingListApi} from "$lib/ShoppingListAPI";
 
     let items: Item[] = [];
     let api_call_promise = todoListAPI.get_non_deleted();
@@ -24,9 +25,12 @@
     }
 
     async function do_insert(event: Event) {
-        const item = await todoListAPI.create(insert_item);
+        if (insert_item.endsWith("<div><br></div>")) {
+            insert_item = insert_item.slice(0, -15);
+        }
+        const item = await todoListAPI.create(insert_item.trim());
         items = [...items, item];
-        insert_item = "";
+        insert_item = " ";
     }
 </script>
 
@@ -44,7 +48,8 @@
         <div bind:innerHTML={insert_item}
              class="btn btn-primary text-xl"
              on:focusin={insert_item = ""}
-             on:click={do_insert}
+             on:focusout={do_insert}
+             on:keyup={e => e.which === 13 && do_insert(e)}
              autofocus
              contenteditable></div>
     </div>
