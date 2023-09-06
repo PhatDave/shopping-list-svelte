@@ -9,6 +9,7 @@ on:
       - '.github/workflows/*'
       - 'apps/web/**/*'
       - 'pnpm-lock.yaml'
+      # UPDATE PLEASE
 
 jobs:
   web-release:
